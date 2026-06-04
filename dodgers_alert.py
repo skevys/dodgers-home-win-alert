@@ -6,18 +6,24 @@ from email.message import EmailMessage
 from zoneinfo import ZoneInfo
 
 DODGERS_ID = 119
+        
+def load_subscribers():
+    with open("subscribers.txt", "r") as f:
+        return [line.strip() for line in f if line.strip()]
 
 def send_email(subject, body):
+    recipients = load_subscribers()
+
     msg = EmailMessage()
     msg["From"] = os.environ["EMAIL_FROM"]
-    msg["To"] = os.environ["EMAIL_TO"]
+    msg["To"] = ", ".join(recipients)
     msg["Subject"] = subject
     msg.set_content(body)
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
         smtp.login(os.environ["EMAIL_FROM"], os.environ["EMAIL_PASSWORD"])
         smtp.send_message(msg)
-
+        
 def main():
     la_time = datetime.now(ZoneInfo("America/Los_Angeles"))
     check_date = (la_time - timedelta(days=1)).strftime("%Y-%m-%d")
