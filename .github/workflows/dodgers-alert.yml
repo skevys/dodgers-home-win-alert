@@ -1,0 +1,30 @@
+name: Dodgers Home Win Alert
+
+on:
+  schedule:
+    - cron: "0 7 * * *"
+      timezone: "America/Los_Angeles"
+  workflow_dispatch:
+
+jobs:
+  check-dodgers:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run Dodgers alert
+        env:
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        run: python dodgers_alert.py
