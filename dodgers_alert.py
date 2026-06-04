@@ -26,7 +26,7 @@ def send_email(subject, body):
         
 def main():
     la_time = datetime.now(ZoneInfo("America/Los_Angeles"))
-    check_date = "2026-05-31" #check_date = (la_time - timedelta(days=1)).strftime("%Y-%m-%d")
+    check_date = (la_time - timedelta(days=1)).strftime("%Y-%m-%d")
 
     url = (
         "https://statsapi.mlb.com/api/v1/schedule"
@@ -55,8 +55,8 @@ def main():
                     f"Final score:\n"
                     f"Dodgers {home_score}\n"
                     f"{opponent} {away_score}\n\n"
-                    f"Game date: {check_date}\n"
-                    f"Go get ur Panda Express you chud"
+                    f"Game date: {check_date}\n\n"
+                    f"Go get ur Panda Express you chud."
                 )
 
 if __name__ == "__main__":
