@@ -55,7 +55,8 @@ def main():
                     f"Final score:\n"
                     f"Dodgers {home_score}\n"
                     f"{opponent} {away_score}\n\n"
-                    f"Game date: {check_date}"
+                    f"Game date: {check_date}\n"
+                    f"Go get ur Panda Express you chud"
                 )
 
 if __name__ == "__main__":
