@@ -26,7 +26,7 @@ def send_email(subject, body):
         
 def main():
     la_time = datetime.now(ZoneInfo("America/Los_Angeles"))
-    check_date = (la_time - timedelta(days=1)).strftime("%Y-%m-%d")
+    check_date = "2026-06-02" #check_date = (la_time - timedelta(days=1)).strftime("%Y-%m-%d")
 
     url = (
         "https://statsapi.mlb.com/api/v1/schedule"
