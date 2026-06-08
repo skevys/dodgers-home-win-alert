@@ -50,7 +50,7 @@ def main():
                 away_score = away["score"]
 
                 send_email(
-                    f"Dodgers won at home! {home_score}-{away_score}",
+                    f"DODGERSWIN",
                     f"The Dodgers beat the {opponent} at home.\n\n"
                     f"Final score:\n"
                     f"Dodgers {home_score}\n"
